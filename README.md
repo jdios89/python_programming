@@ -16,8 +16,8 @@ you develop, including:
 #
 you might need to put something like, i just did
 
-import sys
-sys.path.append('../')
+import sys\n
+sys.path.append('../')\n
 import lorenz
 
 in e.g. cases/case1.py or test/test.py to be access the functions etc.
