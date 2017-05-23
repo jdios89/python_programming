@@ -17,8 +17,8 @@ import plot as pl
 import filehandling as fh
 import util as ut
 
-print("This is a convenient interface for running the simulation \
-     of a lorenz attractor")
+#print("This is a convenient interface for running the simulation \
+#     of a lorenz attractor")
 sigma = ut.my_input_float("sigma") #input all parameters
 rho = ut.my_input_float("rho")
 beta = ut.my_input_float("beta")
@@ -40,3 +40,6 @@ pl.plot_2d("xy", states) #plot xy
 pl.plot_2d("xz", states) #plot xz
 pl.plot_2d("yz", states) #plot yz
 
+fh.save_all('testo',sigma,rho,beta,x,y,z,t,N,states)
+[s2,r3,b2,x2,y2,z2,t2,N2,st2] = fh.load_all('testo')
+pl.plot_3d_states(st2)

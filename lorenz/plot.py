@@ -1,9 +1,8 @@
 """
 This file may contain functionalities for plotting
-
+123456789012345678901234567890123456789012345678901234567890123456789012
 """
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 
 def plot_3d_states(states):
     """
@@ -24,16 +23,25 @@ def plot_2d(selection, states):
     states: array of xyz coordinates
     """
     if selection == "xy":
+        """
+        PLot xy graph
+        """
         plt.plot(states[:,0],states[:,1])
         plt.title("XY graph")
         plt.savefig('states2dxy.pdf')
         plt.show()
     elif selection == "xz":
+        """
+        Plot xz graph
+        """
         plt.plot(states[:,0],states[:,2])
         plt.title("XZ graph")
         plt.savefig('states2dxz.pdf')
         plt.show()
     elif selection == "yz":
+        """
+        Plot yz graph
+        """
         plt.plot(states[:,1],states[:,2])
         plt.title("YZ graph")
         plt.savefig('states2dyz.pdf')
