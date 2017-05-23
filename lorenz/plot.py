@@ -3,6 +3,7 @@ This file may contain functionalities for plotting
 123456789012345678901234567890123456789012345678901234567890123456789012
 """
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import axes3d, Axes3D
 
 def plot_3d_states(states):
     """
@@ -10,9 +11,12 @@ def plot_3d_states(states):
     states: array of states of the simulation
     """
     fig = plt.figure()
-    ax = fig.gca(projection='3d')
+    ax = Axes3D(fig)
+    #ax = fig.add_subplot(111, projection='3d')
+    #ax = fig.gca(projection='3d')
+    #ax = fig.add_subplot(111, projection = '3d')
     ax.plot(states[:,0], states[:,1], states[:,2])
-    fig.savefig('states3d.pdf')
+    fig.savefig( 'states3d.pdf' )
     plt.show()
     return
 
