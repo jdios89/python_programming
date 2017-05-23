@@ -5,7 +5,7 @@ This file may contain functionalities for plotting
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d, Axes3D
 
-def plot_3d_states(states):
+def plot_3d_states(states, save = False, fname = 'experimental'):
     """
     This function will plot the 3d behaviour of the lorenz attractor
     states: array of states of the simulation
@@ -16,11 +16,12 @@ def plot_3d_states(states):
     #ax = fig.gca(projection='3d')
     #ax = fig.add_subplot(111, projection = '3d')
     ax.plot(states[:,0], states[:,1], states[:,2])
-    fig.savefig( 'states3d.pdf' )
+    if save:
+        fig.savefig( fname + '_3d.pdf' )
     plt.show()
     return
 
-def plot_2d(selection, states):
+def plot_2d(selection, states, save = False, fname = 'experimental'):
     """
     This function will plot the selected 2d plot with the given xyz array
     selection: string with the selection
@@ -32,7 +33,8 @@ def plot_2d(selection, states):
         """
         plt.plot(states[:,0],states[:,1])
         plt.title("XY graph")
-        plt.savefig('states2dxy.pdf')
+        if save:
+            plt.savefig( fname + '_xy.pdf')
         plt.show()
     elif selection == "xz":
         """
@@ -40,7 +42,8 @@ def plot_2d(selection, states):
         """
         plt.plot(states[:,0],states[:,2])
         plt.title("XZ graph")
-        plt.savefig('states2dxz.pdf')
+        if save:
+            plt.savefig( fname + '_xz.pdf')
         plt.show()
     elif selection == "yz":
         """
@@ -48,7 +51,8 @@ def plot_2d(selection, states):
         """
         plt.plot(states[:,1],states[:,2])
         plt.title("YZ graph")
-        plt.savefig('states2dyz.pdf')
+        if save:
+            plt.savefig( fname + '_yz.pdf')
         plt.show()
     else:
         print ("The selection was not correct")
