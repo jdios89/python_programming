@@ -39,31 +39,32 @@ def run_lorenz(parameters, ini_state, t = 40, N = 50000, plot = True,
 def load_lorenz(fname, plot = True):
     return
      
+if __name__ == '__main__':
     
 #print("This is a convenient interface for running the simulation \
 #     of a lorenz attractor")
-sigma = ut.my_input_float("sigma") #input all parameters
-rho = ut.my_input_float("rho")
-beta = ut.my_input_float("beta")
-x = ut.my_input_float("x") #input initial conditions
-y = ut.my_input_float("y")
-z = ut.my_input_float("z")
-t = ut.my_input_int("time in seconds") 
-parameters = (sigma, rho, beta)
-N = 50000 #assign 50000 steps as suggested
-t_d = t/N #timestep calculated from simulation time
-time = [i*t_d for i in range(N)] #get each discrete time
-states = np.array([[x,y,z]]) #create the array
-for i in range(1,N):
-    states = np.concatenate((states, 
+    sigma = ut.my_input_float("sigma") #input all parameters
+    rho = ut.my_input_float("rho")
+    beta = ut.my_input_float("beta")
+    x = ut.my_input_float("x") #input initial conditions
+    y = ut.my_input_float("y")
+    z = ut.my_input_float("z")
+    t = ut.my_input_int("time in seconds") 
+    parameters = (sigma, rho, beta)
+    N = 50000 #assign 50000 steps as suggested
+    t_d = t/N #timestep calculated from simulation time
+    time = [i*t_d for i in range(N)] #get each discrete time
+    states = np.array([[x,y,z]]) #create the array
+    for i in range(1,N):
+        states = np.concatenate((states, 
             [sol.lorenz_solver(states[i-1,:], parameters, t_d)]))
 
-pl.plot_3d_states(states) #plot x,y,z
-pl.plot_2d("xy", states) #plot xy
-pl.plot_2d("xz", states) #plot xz
-pl.plot_2d("yz", states) #plot yz
+    pl.plot_3d_states(states) #plot x,y,z
+    pl.plot_2d("xy", states) #plot xy
+    pl.plot_2d("xz", states) #plot xz
+    pl.plot_2d("yz", states) #plot yz
 
-fh.save_all('testo',sigma,rho,beta,x,y,z,t,N,states)
-[s2,r3,b2,x2,y2,z2,t2,N2,st2] = fh.load_all('testo')
+    fh.save_all('testo',sigma,rho,beta,x,y,z,t,N,states)
+    [s2,r3,b2,x2,y2,z2,t2,N2,st2] = fh.load_all('testo')
 
-pl.plot_3d_states(st2)
+    pl.plot_3d_states(st2)
