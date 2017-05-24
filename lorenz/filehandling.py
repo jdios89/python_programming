@@ -3,15 +3,21 @@ This file can contain functionalities for saving/loading data
 123456789012345678901234567890123456789012345678901234567890123456789012
 """
 
-import h5py
+import h5py, os
 
-def save_all(fname, sigma, rho, beta, x, y, z, t, N, states):
+def save_all(fname, sigma, rho, beta, x, y, z, t, N, states, directory = None):
     """
     This function is to save all data in a HDF5 interface. The data 
     comprises configuration variables and the solution for the given 
     data
     """
-    f = h5py.File( fname + '.hdf5', 'w')
+    if directory != None:
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        f = h5py.File( directory + '/' + fname + '.hdf5', 'w')
+    else:
+        f = h5py.File( fname + '.hdf5', 'w')
+        
     f.create_dataset( 'sigma', data = sigma)
     f.create_dataset( 'rho', data = rho)
     f.create_dataset( 'beta', data = beta)
@@ -48,4 +54,4 @@ def load_all(fname):
     states = states [...]
     return sigma,rho,beta,x,y,z,t,N,states
 
-    
+   
