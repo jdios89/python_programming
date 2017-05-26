@@ -19,8 +19,9 @@ import lorenz.solver as sol
 import lorenz.filehandling as fh
 import lorenz.util as ut
 
-def run_lorenz(parameters, ini_state = [0.1, 0.1, 0.2], t = 40, N = 50000, plot = True,
-               save = True, fname = 'Test', directory = None):
+def run_lorenz(parameters, ini_state = [0.1, 0.1, 0.2], t = 40, 
+               N = 50000, plot = True, save = True, fname = 'Test', 
+               directory = None):
     """
     This function is to run the lorenz simulation, plot it, and save it 
     parameters is a list containing sigma, rho, beta

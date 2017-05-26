@@ -18,6 +18,10 @@ def plot_3d_states(states, save = False, fname = 'experimental',
     #ax = fig.gca(projection='3d')
     #ax = fig.add_subplot(111, projection = '3d')
     ax.plot(states[:,0], states[:,1], states[:,2])
+    plt.title('Lorenz Attractor')
+    ax.set_xlabel('X Label')
+    ax.set_ylabel('Y Label')
+    ax.set_zlabel('Z Label')
     if save:
         if directory != None:
             if not os.path.exists(directory):
@@ -41,7 +45,10 @@ def plot_2d(selection, states, save = False, fname = 'experimental',
         PLot xy graph
         """
         plt.plot(states[:,0],states[:,1])
-        plt.title("XY graph")
+        plt.title("Lorenz Attractor")
+        plt.xlabel('X')
+        plt.ylabel('Y')
+        plt.grid()
         if save:
             if directory != None:
                 if not os.path.exists(directory):
@@ -55,7 +62,10 @@ def plot_2d(selection, states, save = False, fname = 'experimental',
         Plot xz graph
         """
         plt.plot(states[:,0],states[:,2])
-        plt.title("XZ graph")
+        plt.title("Lorenz Attractor")
+        plt.xlabel('X')
+        plt.ylabel('Z')
+        plt.grid()
         if save:
             if directory != None:
                 if not os.path.exists(directory):
@@ -69,7 +79,10 @@ def plot_2d(selection, states, save = False, fname = 'experimental',
         Plot yz graph
         """
         plt.plot(states[:,1],states[:,2])
-        plt.title("YZ graph")
+        plt.title("Lorenz Attractor")
+        plt.xlabel('Y')
+        plt.ylabel('Z')
+        plt.grid()
         if save:
             if directory != None:
                 if not os.path.exists(directory):
