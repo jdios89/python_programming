@@ -20,7 +20,7 @@ import lorenz.filehandling as fh
 import lorenz.util as ut
 
 def run_lorenz(parameters, ini_state = [0.1, 0.1, 0.2], t = 40, 
-               N = 50000, plot = True, save = True, fname = 'Test', 
+               N = 50000, plot = False, save = False, fname = 'Test', 
                directory = None):
     """
     This function is to run the lorenz simulation, plot it, and save it 
@@ -43,7 +43,7 @@ def run_lorenz(parameters, ini_state = [0.1, 0.1, 0.2], t = 40,
     if save:
         fh.save_all(fname, sigma, rho, beta, x, y, z, t, N, states, 
                     directory)
-    return
+    return states
          
 def load_lorenz(fname = 'Test', plot = True):
     [s2,r3,b2,x2,y2,z2,t2,N2,st2] = fh.load_all(fname)
@@ -75,11 +75,34 @@ if __name__ == '__main__':
             [sol.lorenz_solver(states[i-1,:], parameters, t_d)]))
 
     pl.plot_3d_states(states) #plot x,y,z
-    pl.plot_2d("xy", states) #plot xy
-    pl.plot_2d("xz", states) #plot xz
-    pl.plot_2d("yz", states) #plot yz
+    #pl.plot_2d("xy", states) #plot xy
+    #pl.plot_2d("xz", states) #plot xz
+    #pl.plot_2d("yz", states) #plot yz
 
-    fh.save_all('testo',sigma,rho,beta,x,y,z,t,N,states)
-    [s2,r3,b2,x2,y2,z2,t2,N2,st2] = fh.load_all('testo')
+    #fh.save_all('testo',sigma,rho,beta,x,y,z,t,N,states)
+    #[s2,r3,b2,x2,y2,z2,t2,N2,st2] = fh.load_all('testo')
 
-    pl.plot_3d_states(st2)
+    #pl.plot_3d_states(st2)
+    
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from scipy.integrate import odeint
+    from mpl_toolkits.mplot3d import Axes3D
+
+    rho = 28.0
+    sigma = 10.0
+    beta = 8.0 / 3.0
+
+    def f(state, t):
+        x, y, z = state  # unpack the state vector
+        return sigma * (y - x), x * (rho - z) - y, x * y - beta * z  # derivatives
+
+    state0 = [1.0, 1.0, 1.0]
+    t = np.arange(0.0, 40.0, 0.01)
+
+    states = odeint(f, state0, t)
+
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    ax.plot(states[:,0], states[:,1], states[:,2])
+    plt.show()

@@ -19,9 +19,9 @@ def plot_3d_states(states, save = False, fname = 'experimental',
     #ax = fig.add_subplot(111, projection = '3d')
     ax.plot(states[:,0], states[:,1], states[:,2])
     plt.title('Lorenz Attractor')
-    ax.set_xlabel('X Label')
-    ax.set_ylabel('Y Label')
-    ax.set_zlabel('Z Label')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
     if save:
         if directory != None:
             if not os.path.exists(directory):
