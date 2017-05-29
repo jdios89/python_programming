@@ -5,7 +5,7 @@ This file can contain functionalities for saving/loading data
 
 import h5py, os
 
-def save_all(fname, sigma, rho, beta, x, y, z, t, N, states, directory = None):
+def save_all(fname, sigma, rho, beta, x, y, z, t, t_d, states, directory = None):
     """
     This function is to save all data in a HDF5 interface. The data 
     comprises configuration variables and the solution for the given 
@@ -24,8 +24,8 @@ def save_all(fname, sigma, rho, beta, x, y, z, t, N, states, directory = None):
     f.create_dataset( 'x', data = x)
     f.create_dataset( 'y', data = y)
     f.create_dataset( 'z', data = z)
-    f.create_dataset( 't', data = t)
-    f.create_dataset( 'N', data = N)
+    f.create_dataset( 't_d', data = t)
+    f.create_dataset( 'N', data = t_d)
     f.create_dataset( 'states', data = states)
     f.close()
 
@@ -46,12 +46,12 @@ def load_all(fname):
     y = y [...]
     z = f [ 'z' ]
     z = z [...]
-    t = f [ 't' ]
-    t = t [...]
+    t_d = f [ 't_d' ]
+    t_d = t_d [...]
     N = f [ 'N' ]
     N = N [...]
     states = f [ 'states' ]
     states = states [...]
-    return sigma,rho,beta,x,y,z,t,N,states
+    return sigma,rho,beta,x,y,z,t,t_d,states
 
    

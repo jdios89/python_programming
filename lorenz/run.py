@@ -18,8 +18,11 @@ import lorenz.plot as pl
 import lorenz.solver as sol
 import lorenz.filehandling as fh
 import lorenz.util as ut
+import matplotlib.pyplot as plt
 
-def run_lorenz(parameters, ini_state = [0.1, 0.1, 0.2], t = 40, 
+
+
+def run_lorenz(parameters, ini_state = [0.1, 0.1, 0.2], t_d = 1e-3, 
                N = 50000, plot = False, save = False, fname = 'Test', 
                directory = None):
     """
@@ -29,24 +32,30 @@ def run_lorenz(parameters, ini_state = [0.1, 0.1, 0.2], t = 40,
     """
     sigma, rho, beta = parameters
     x, y, z = ini_state
-    t_d = t/N
-    time = [i*t_d for i in range(N)] #get each discrete time
+    #t_d = t/N
+    #time = [i*t_d for i in range(N)] #get each discrete time
     states = np.array([[x,y,z]]) #create the array
-    for i in range(1,N):
+    t = t_d * N
+    ti = np.arange(0.0, t, t_d)
+    cntr = 1
+    for i in ti[:-1]:
         states = np.concatenate((states, 
-            [sol.lorenz_solver(states[i-1,:], parameters, t_d)]))
+             [sol.lorenz_solver(states[cntr-1,:], parameters, t_d)]))
+        cntr = cntr + 1
+        #states = np.concatenate((states, 
+        #    [sol.lorenz_solver(states[i-1,:], parameters, t_d)]))
     if plot:
         pl.plot_3d_states(states, save, fname, directory) #plot x,y,z
         pl.plot_2d("xy", states, save, fname, directory) #plot xy
         pl.plot_2d("xz", states, save, fname, directory) #plot xz
         pl.plot_2d("yz", states, save, fname, directory) #plot yz
     if save:
-        fh.save_all(fname, sigma, rho, beta, x, y, z, t, N, states, 
+        fh.save_all(fname, sigma, rho, beta, x, y, z, t_d, N, states, 
                     directory)
     return states
          
 def load_lorenz(fname = 'Test', plot = True):
-    [s2,r3,b2,x2,y2,z2,t2,N2,st2] = fh.load_all(fname)
+    [s2,r3,b2,x2,y2,z2,t_d2,N2,st2] = fh.load_all(fname)
     if plot:
         pl.plot_3d_states(st2)
     return
@@ -57,20 +66,25 @@ if __name__ == '__main__':
     """
 #print("This is a convenient interface for running the simulation \
 #     of a lorenz attractor")
-    sigma = ut.my_input_float("sigma") #input all parameters
-    rho = ut.my_input_float("rho")
-    beta = ut.my_input_float("beta")
-    x = ut.my_input_float("x") #input initial conditions
-    y = ut.my_input_float("y")
-    z = ut.my_input_float("z")
-    ini_state = x, y, z
-    t = ut.my_input_int("time in seconds") 
+    #sigma = ut.my_input_float("sigma") #input all parameters
+    #rho = ut.my_input_float("rho")
+    #beta = ut.my_input_float("beta")
+    #x = ut.my_input_float("x") #input initial conditions
+    #y = ut.my_input_float("y")
+    #z = ut.my_input_float("z")
+    #ini_state = x, y, z
+    sigma = 14
+    rho = 28
+    beta = 13/3
+    ini_state = [1.0, 1.0, 1.0]
+    t_d = 0.001
+    #t = ut.my_input_int("time in seconds") 
     parameters = (sigma, rho, beta)
-    N = 50000 #assign 50000 steps as suggested
-    t_d = t/N #timestep calculated from simulation time
-    time = [i*t_d for i in range(N)] #get each discrete time
-    states = np.array([[x,y,z]]) #create the array
-    for i in range(1,N):
+    N = 100000 #assign 50000 steps as suggested
+    t = t_d * N #timestep calculated from simulation time
+    #states = np.array([[x,y,z]]) #create the array
+    states = np.array([ini_state])
+    for i in range(0,N-1):
         states = np.concatenate((states, 
             [sol.lorenz_solver(states[i-1,:], parameters, t_d)]))
 
@@ -79,30 +93,45 @@ if __name__ == '__main__':
     #pl.plot_2d("xz", states) #plot xz
     #pl.plot_2d("yz", states) #plot yz
 
-    #fh.save_all('testo',sigma,rho,beta,x,y,z,t,N,states)
-    #[s2,r3,b2,x2,y2,z2,t2,N2,st2] = fh.load_all('testo')
+    #fh.save_all('testo',sigma,rho,beta,x,y,z,t,t_d,states)
+    #[s2,r3,b2,x2,y2,z2,t2,t_d2,st2] = fh.load_all('testo')
 
     #pl.plot_3d_states(st2)
     
-    import numpy as np
-    import matplotlib.pyplot as plt
-    from scipy.integrate import odeint
-    from mpl_toolkits.mplot3d import Axes3D
-
-    rho = 28.0
-    sigma = 10.0
-    beta = 8.0 / 3.0
-
-    def f(state, t):
-        x, y, z = state  # unpack the state vector
-        return sigma * (y - x), x * (rho - z) - y, x * y - beta * z  # derivatives
-
-    state0 = [1.0, 1.0, 1.0]
-    t = np.arange(0.0, 40.0, 0.01)
-
-    states = odeint(f, state0, t)
-
+    """
+    This is for testing. For testing the function. 
+    """
+    w_states = ut.wikipedia_lorenz([sigma, rho, beta], ini_state, t_d, N, plot = True)
+    
     fig = plt.figure()
     ax = fig.gca(projection='3d')
     ax.plot(states[:,0], states[:,1], states[:,2])
+    ax.plot(w_states[:,0], w_states[:,1], w_states[:,2])
+    plt.legend(['my','wiki'])
+    plt.title('Wikipedia vs mine')
     plt.show()
+    
+
+#    
+#    import numpy as np
+#    import matplotlib.pyplot as plt
+#    from scipy.integrate import odeint
+#    from mpl_toolkits.mplot3d import Axes3D
+#
+#    rho = 28.0
+#    sigma = 10.0
+#    beta = 8.0 / 3.0
+#
+#    def f(state, t):
+#        x, y, z = state  # unpack the state vector
+#        return sigma * (y - x), x * (rho - z) - y, x * y - beta * z  # derivatives
+#
+#    state0 = [1.0, 1.0, 1.0]
+#    t = np.arange(0.0, 40.0, 0.01)
+#
+#    states = odeint(f, state0, t)
+#
+#    fig = plt.figure()
+#    ax = fig.gca(projection='3d')
+#    ax.plot(states[:,0], states[:,1], states[:,2])
+#    plt.show()

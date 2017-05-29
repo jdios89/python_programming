@@ -14,3 +14,4 @@ def lorenz_solver(state, parameters, t_d):
     sigma, rho, beta = parameters # get the parameters
     return t_d * sigma * (y - x) + x, t_d * ( x * (rho - z) - y) + y, \
            t_d * (x * y - beta * z ) + z
+
