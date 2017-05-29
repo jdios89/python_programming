@@ -73,14 +73,14 @@ if __name__ == '__main__':
     #y = ut.my_input_float("y")
     #z = ut.my_input_float("z")
     #ini_state = x, y, z
-    sigma = 14
-    rho = 28
-    beta = 13/3
+    sigma = 10
+    rho = 6
+    beta = 8/3
     ini_state = [1.0, 1.0, 1.0]
-    t_d = 0.001
+    t_d = 0.01
     #t = ut.my_input_int("time in seconds") 
     parameters = (sigma, rho, beta)
-    N = 100000 #assign 50000 steps as suggested
+    N = 80000 #assign 50000 steps as suggested
     t = t_d * N #timestep calculated from simulation time
     #states = np.array([[x,y,z]]) #create the array
     states = np.array([ini_state])
@@ -105,12 +105,35 @@ if __name__ == '__main__':
     
     fig = plt.figure()
     ax = fig.gca(projection='3d')
+    ax.plot(w_states[0000:70000,0], w_states[0000:70000,1], w_states[0000:70000,2])
+    plt.legend(['wiki'])
+    plt.title('Wikipedia')
+    plt.show()
+    
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    ax.plot(states[0000:70000,0], states[0000:70000,1], states[0000:70000,2])
+    plt.legend(['my'])
+    plt.title(' mine')
+    plt.show()
+    
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
     ax.plot(states[:,0], states[:,1], states[:,2])
     ax.plot(w_states[:,0], w_states[:,1], w_states[:,2])
     plt.legend(['my','wiki'])
     plt.title('Wikipedia vs mine')
     plt.show()
     
+    
+    ss = states - w_states
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    ax.plot(ss[:,0], ss[:,1], ss[:,2])
+    plt.legend(['my'])
+    plt.title('diff Wikipedia vs mine')
+    plt.show()
+#    
 
 #    
 #    import numpy as np
