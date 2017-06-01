@@ -1,14 +1,34 @@
 """
-This file contain the ODE solver
-123456789012345678901234567890123456789012345678901234567890123456789012
+This is the solver for the differential equations of Lorenz attractor. 
 """
 
 def lorenz_solver(state, parameters, t_d):
     """
-    This is an Euler solver for the lorenz attractor
-    state: contains the x,y,z state
-    parameters: contains the sigma, rho, beta parameters
-    t_d: the time step for the discrete integration
+    
+    Returns the array of x,y,z value after solving the ODE of the lorenz
+    attractor using the Euler approach. 
+
+    INPUT::
+
+     state:    x,y,z state
+     parameters:    sigma, rho, beta parameters
+     t_d:    the time step for the discrete integration
+
+    OUTPUT::
+
+     [x+1, y+1, z+1]:    The next x,y,z values
+
+    It is more accurate when it is close to the convergence point of the
+    attractor. 
+
+    Example: 
+
+    >>> state = [1.0, 1.0, 1.0]
+    >>> parameters = [1.0, 1.0, 1.0]
+    >>> t_d = 0.001
+    >>> lorenz_solver(state, parameters, t_d)
+    (1.0, 0.999, 1.0)
+    
     """
     x, y, z = state # get the state
     sigma, rho, beta = parameters # get the parameters
