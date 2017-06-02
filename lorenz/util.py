@@ -1,7 +1,5 @@
 """
-This file may contain utility functionalities to the extend you will 
-need it
-123456789012345678901234567890123456789012345678901234567890123456789012
+This file may contain utility functionalities.
 """
 
 import numpy as np
@@ -9,12 +7,23 @@ import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 from mpl_toolkits.mplot3d import Axes3D
 
-
-
-
 def my_input_float(var):
     """
-    This function is for validation of entering a float value
+
+    This function is for validation of entering a float value.
+
+    INPUT::
+
+     var:    name of variable to display. 
+
+    OUTPUT:: 
+
+     variable:    float input variable
+
+    Example: 
+
+    >>> a = my_input_float("a")
+    
     """
     while True:
         try:
@@ -28,7 +37,21 @@ def my_input_float(var):
 
 def my_input_int(var):
     """
-    This function is for validation of entering a float value
+
+    This function is for validation of entering an int value.
+
+    INPUT::
+
+     var:    name of variable to display. 
+
+    OUTPUT:: 
+
+     variable:    int input variable
+
+    Example: 
+
+    >>> a = my_input_int("a")
+    
     """
     while True:
         try:
@@ -46,6 +69,26 @@ def wikipedia_lorenz(parameters, ini_state = [1.0, 1.0, 1.0],
     This is a Lorenz attractor taken from the wikipedia page 
     It will solve the lorenz attractor with a built-in solver
     odeint of numpy
+
+    INPUT:: 
+
+     parameters:    array of parameters of the lorenz attractor
+     ini_state:    initial state
+     t_d:    time difference
+     N:    number of samples
+     plot:    bool value for ploting
+
+    OUTPUT:: 
+
+     states:    array of states 
+
+    Example:
+
+    >>> state = [1.0, 1.0, 1.0]
+    >>> parameters = [1.0, 1.0, 1.0]
+    >>> t_d = 0.001
+    >>> states = lorenz_solver(parameters, state, t_d, plot = True)
+     
     """
     sigma, rho, beta = parameters
     x, y, z = ini_state

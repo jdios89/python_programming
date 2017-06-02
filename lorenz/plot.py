@@ -1,6 +1,5 @@
 """
 This file may contain functionalities for plotting
-123456789012345678901234567890123456789012345678901234567890123456789012
 """
 import os
 import matplotlib.pyplot as plt
@@ -9,8 +8,23 @@ from mpl_toolkits.mplot3d import axes3d, Axes3D
 def plot_3d_states(states, save = False, fname = 'experimental', 
                    directory = None):
     """
-    This function will plot the 3d behaviour of the lorenz attractor
-    states: array of states of the simulation
+    Plot the x,y,z coordinates of the lorenz attractor
+
+    INPUT::
+
+     states:    array of [x,y,z]
+     save:    bool value
+     fname:    name of file
+     directory: route or name of folder
+
+    OUTPUT:: 
+
+     Plots and pdf figures
+
+    Example
+
+    >>> plot_3d_states(states)
+
     """
     fig = plt.figure()
     ax = Axes3D(fig)
@@ -35,9 +49,24 @@ def plot_3d_states(states, save = False, fname = 'experimental',
 def plot_2d(selection, states, save = False, fname = 'experimental',
             directory = None):
     """
-    This function will plot the selected 2d plot with the given xyz array
-    selection: string with the selection
-    states: array of xyz coordinates
+    Plot the x,y and x,z and y,z coordinates of the lorenz attractor
+
+    INPUT::
+
+     selection:    which to plot
+     states:    array of [x,y,z]
+     save:    bool value
+     fname:    name of file
+     directory: route or name of folder
+
+    OUTPUT:: 
+
+     Plots and pdf figures
+
+    Example
+
+    >>> plot_2d("xy", states)
+
     """
     plt.figure()
     if selection == "xy":
@@ -45,7 +74,7 @@ def plot_2d(selection, states, save = False, fname = 'experimental',
         PLot xy graph
         """
         plt.plot(states[:,0],states[:,1])
-        plt.title("Lorenz Attractor")
+        plt.title("Lorenz Attractor XY")
         plt.xlabel('X')
         plt.ylabel('Y')
         plt.grid()
@@ -62,7 +91,7 @@ def plot_2d(selection, states, save = False, fname = 'experimental',
         Plot xz graph
         """
         plt.plot(states[:,0],states[:,2])
-        plt.title("Lorenz Attractor")
+        plt.title("Lorenz Attractor XZ")
         plt.xlabel('X')
         plt.ylabel('Z')
         plt.grid()
@@ -79,7 +108,7 @@ def plot_2d(selection, states, save = False, fname = 'experimental',
         Plot yz graph
         """
         plt.plot(states[:,1],states[:,2])
-        plt.title("Lorenz Attractor")
+        plt.title("Lorenz Attractor YZ")
         plt.xlabel('Y')
         plt.ylabel('Z')
         plt.grid()

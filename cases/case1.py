@@ -1,6 +1,5 @@
 """
 This file contain the case 1
-123456789012345678901234567890123456789012345678901234567890123456789012
 """
 import sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))  
@@ -12,6 +11,6 @@ rho = 6
 
 parameters = sigma, rho, beta
 initial = [1.0, -2.0, 3.0]
-lorenz.run.run_lorenz(parameters, ini_state = initial, t = 100, 
+lorenz.run.run_lorenz(parameters, ini_state = initial, t_d = 0.001, 
                       plot = True, save = True, fname = 'case_1', 
                       directory = 'case 1')

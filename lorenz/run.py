@@ -4,7 +4,6 @@ This file may contain a convenient interface/function for
 1: computing a trajectory using an ODE solver from solver.py
 2: save data to file
 3: plot data
-123456789012345678901234567890123456789012345678901234567890123456789012
 and possible another function that
 
 2: load data from file
@@ -22,13 +21,34 @@ import matplotlib.pyplot as plt
 
 
 
-def run_lorenz(parameters, ini_state = [0.1, 0.1, 0.2], t_d = 1e-3, 
+def run_lorenz(parameters, ini_state = [0.1, 0.1, 0.1], t_d = 1e-3, 
                N = 50000, plot = False, save = False, fname = 'Test', 
                directory = None):
     """
-    This function is to run the lorenz simulation, plot it, and save it 
-    parameters is a list containing sigma, rho, beta
-    ini_state is a vector contaning 
+    Return the states, save the variables, plots and save the plots
+    using the auxiliary functions provided. 
+
+    INPUT::
+
+     parameters:    the parameters of the lorenz attractor
+     ini_state:    initial state of the lorenz attractor
+     t_d:    the time differential 
+     N:    number of samples
+     plot:    bool to plot
+     save:    bool for saving
+     fname:    name of file
+     directory:    directory to save
+
+    OUTPUT:: 
+  
+     states:    the states of the lorenz attractor in the span of
+                the differential time and number of samples
+
+    Example: 
+
+    >>> param = [10, 2, 6]
+    >>> run_lorenz(param)
+     
     """
     sigma, rho, beta = parameters
     x, y, z = ini_state
@@ -55,6 +75,22 @@ def run_lorenz(parameters, ini_state = [0.1, 0.1, 0.2], t_d = 1e-3,
     return states
          
 def load_lorenz(fname = 'Test', plot = True):
+    """
+    This function will load the lorenz and plot it
+
+    INPUT:: 
+
+     fname:    the name of the file to open
+     plot:    bool to plot or not
+
+    OUTPUT:: 
+
+     Nothing, just plots
+
+    Example: 
+
+    >>> load_lorenz('Test', True)
+    """
     [s2,r3,b2,x2,y2,z2,t_d2,N2,st2] = fh.load_all(fname)
     if plot:
         pl.plot_3d_states(st2)

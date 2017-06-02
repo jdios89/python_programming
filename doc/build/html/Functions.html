@@ -135,21 +135,48 @@ order euler approach which explicit math is depicted below.</p>
 <h2>Plot: functions for plotting<a class="headerlink" href="#plot-functions-for-plotting" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
 <h3>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-lorenz.plot"></span><p>This file may contain functionalities for plotting
-123456789012345678901234567890123456789012345678901234567890123456789012</p>
+<span class="target" id="module-lorenz.plot"></span><p>This file may contain functionalities for plotting</p>
 <dl class="function">
 <dt id="lorenz.plot.plot_2d">
 <code class="descclassname">lorenz.plot.</code><code class="descname">plot_2d</code><span class="sig-paren">(</span><em>selection</em>, <em>states</em>, <em>save=False</em>, <em>fname='experimental'</em>, <em>directory=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lorenz.plot.plot_2d" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function will plot the selected 2d plot with the given xyz array
-selection: string with the selection
-states: array of xyz coordinates</p>
+<dd><p>Plot the x,y and x,z and y,z coordinates of the lorenz attractor</p>
+<p>INPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">selection</span><span class="p">:</span>    <span class="n">which</span> <span class="n">to</span> <span class="n">plot</span>
+<span class="n">states</span><span class="p">:</span>    <span class="n">array</span> <span class="n">of</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]</span>
+<span class="n">save</span><span class="p">:</span>    <span class="nb">bool</span> <span class="n">value</span>
+<span class="n">fname</span><span class="p">:</span>    <span class="n">name</span> <span class="n">of</span> <span class="n">file</span>
+<span class="n">directory</span><span class="p">:</span> <span class="n">route</span> <span class="ow">or</span> <span class="n">name</span> <span class="n">of</span> <span class="n">folder</span>
+</pre></div>
+</div>
+<p>OUTPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Plots</span> <span class="ow">and</span> <span class="n">pdf</span> <span class="n">figures</span>
+</pre></div>
+</div>
+<p>Example</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plot_2d</span><span class="p">(</span><span class="s2">&quot;xy&quot;</span><span class="p">,</span> <span class="n">states</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="lorenz.plot.plot_3d_states">
 <code class="descclassname">lorenz.plot.</code><code class="descname">plot_3d_states</code><span class="sig-paren">(</span><em>states</em>, <em>save=False</em>, <em>fname='experimental'</em>, <em>directory=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lorenz.plot.plot_3d_states" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function will plot the 3d behaviour of the lorenz attractor
-states: array of states of the simulation</p>
+<dd><p>Plot the x,y,z coordinates of the lorenz attractor</p>
+<p>INPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">states</span><span class="p">:</span>    <span class="n">array</span> <span class="n">of</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]</span>
+<span class="n">save</span><span class="p">:</span>    <span class="nb">bool</span> <span class="n">value</span>
+<span class="n">fname</span><span class="p">:</span>    <span class="n">name</span> <span class="n">of</span> <span class="n">file</span>
+<span class="n">directory</span><span class="p">:</span> <span class="n">route</span> <span class="ow">or</span> <span class="n">name</span> <span class="n">of</span> <span class="n">folder</span>
+</pre></div>
+</div>
+<p>OUTPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Plots</span> <span class="ow">and</span> <span class="n">pdf</span> <span class="n">figures</span>
+</pre></div>
+</div>
+<p>Example</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plot_3d_states</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -157,7 +184,6 @@ states: array of states of the simulation</p>
 <h3>Code<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This file may contain functionalities for plotting</span>
-<span class="sd">123456789012345678901234567890123456789012345678901234567890123456789012</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -166,8 +192,23 @@ states: array of states of the simulation</p>
 <span class="k">def</span> <span class="nf">plot_3d_states</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;experimental&#39;</span><span class="p">,</span> 
                    <span class="n">directory</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This function will plot the 3d behaviour of the lorenz attractor</span>
-<span class="sd">    states: array of states of the simulation</span>
+<span class="sd">    Plot the x,y,z coordinates of the lorenz attractor</span>
+
+<span class="sd">    INPUT::</span>
+
+<span class="sd">     states:    array of [x,y,z]</span>
+<span class="sd">     save:    bool value</span>
+<span class="sd">     fname:    name of file</span>
+<span class="sd">     directory: route or name of folder</span>
+
+<span class="sd">    OUTPUT:: </span>
+
+<span class="sd">     Plots and pdf figures</span>
+
+<span class="sd">    Example</span>
+
+<span class="sd">    &gt;&gt;&gt; plot_3d_states(states)</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">Axes3D</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
@@ -192,9 +233,24 @@ states: array of states of the simulation</p>
 <span class="k">def</span> <span class="nf">plot_2d</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;experimental&#39;</span><span class="p">,</span>
             <span class="n">directory</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This function will plot the selected 2d plot with the given xyz array</span>
-<span class="sd">    selection: string with the selection</span>
-<span class="sd">    states: array of xyz coordinates</span>
+<span class="sd">    Plot the x,y and x,z and y,z coordinates of the lorenz attractor</span>
+
+<span class="sd">    INPUT::</span>
+
+<span class="sd">     selection:    which to plot</span>
+<span class="sd">     states:    array of [x,y,z]</span>
+<span class="sd">     save:    bool value</span>
+<span class="sd">     fname:    name of file</span>
+<span class="sd">     directory: route or name of folder</span>
+
+<span class="sd">    OUTPUT:: </span>
+
+<span class="sd">     Plots and pdf figures</span>
+
+<span class="sd">    Example</span>
+
+<span class="sd">    &gt;&gt;&gt; plot_2d(&quot;xy&quot;, states)</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">selection</span> <span class="o">==</span> <span class="s2">&quot;xy&quot;</span><span class="p">:</span>
@@ -202,7 +258,7 @@ states: array of states of the simulation</p>
 <span class="sd">        PLot xy graph</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">states</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lorenz Attractor&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lorenz Attractor XY&quot;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
@@ -219,7 +275,7 @@ states: array of states of the simulation</p>
 <span class="sd">        Plot xz graph</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">states</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lorenz Attractor&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lorenz Attractor XZ&quot;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
@@ -236,7 +292,7 @@ states: array of states of the simulation</p>
 <span class="sd">        Plot yz graph</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">states</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lorenz Attractor&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lorenz Attractor YZ&quot;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
@@ -259,20 +315,60 @@ states: array of states of the simulation</p>
 <h2>File Handling: File handling for saving data for reproducible research<a class="headerlink" href="#file-handling-file-handling-for-saving-data-for-reproducible-research" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
 <h3>Functions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-lorenz.filehandling"></span><p>This file can contain functionalities for saving/loading data
-123456789012345678901234567890123456789012345678901234567890123456789012</p>
+<span class="target" id="module-lorenz.filehandling"></span><p>This file can contain functionalities for saving/loading data</p>
 <dl class="function">
 <dt id="lorenz.filehandling.load_all">
 <code class="descclassname">lorenz.filehandling.</code><code class="descname">load_all</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="headerlink" href="#lorenz.filehandling.load_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function is to load all the variables</p>
+<dd><p>Save the variables, parameters and results in a hdf5 file</p>
+<p>INPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fname</span><span class="p">:</span>    <span class="n">name</span> <span class="n">of</span> <span class="n">file</span>
+</pre></div>
+</div>
+<p>OUTPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sigma</span><span class="p">:</span>    <span class="n">sigma</span> <span class="n">parameter</span>
+<span class="n">rho</span><span class="p">:</span>    <span class="n">rho</span> <span class="n">parameter</span>
+<span class="n">beta</span><span class="p">:</span>    <span class="n">beta</span> <span class="n">parameter</span>
+<span class="n">x</span><span class="p">:</span>    <span class="n">x</span> <span class="n">initial</span> <span class="n">state</span>
+<span class="n">y</span><span class="p">:</span>    <span class="n">y</span> <span class="n">initial</span> <span class="n">state</span>
+<span class="n">z</span><span class="p">:</span>    <span class="n">z</span> <span class="n">initial</span> <span class="n">state</span>
+<span class="n">t_d</span><span class="p">:</span>    <span class="n">time</span> <span class="n">differential</span>
+<span class="n">N</span><span class="p">:</span>    <span class="n">number</span> <span class="n">of</span> <span class="n">samples</span>
+<span class="n">states</span><span class="p">:</span>    <span class="n">array</span> <span class="n">of</span> <span class="n">states</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;experimental&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">sigma</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t_d</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">states</span><span class="p">]</span> <span class="o">=</span> <span class="n">load_all</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>  
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="lorenz.filehandling.save_all">
-<code class="descclassname">lorenz.filehandling.</code><code class="descname">save_all</code><span class="sig-paren">(</span><em>fname</em>, <em>sigma</em>, <em>rho</em>, <em>beta</em>, <em>x</em>, <em>y</em>, <em>z</em>, <em>t</em>, <em>t_d</em>, <em>states</em>, <em>directory=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lorenz.filehandling.save_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function is to save all data in a HDF5 interface. The data 
-comprises configuration variables and the solution for the given 
-data</p>
+<code class="descclassname">lorenz.filehandling.</code><code class="descname">save_all</code><span class="sig-paren">(</span><em>fname</em>, <em>sigma</em>, <em>rho</em>, <em>beta</em>, <em>x</em>, <em>y</em>, <em>z</em>, <em>t_d</em>, <em>N</em>, <em>states</em>, <em>directory=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lorenz.filehandling.save_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the variables, parameters and results in a hdf5 file</p>
+<p>INPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fname</span><span class="p">:</span>    <span class="n">name</span> <span class="n">of</span> <span class="n">file</span> 
+<span class="n">sigma</span><span class="p">:</span>    <span class="n">sigma</span> <span class="n">parameter</span>
+<span class="n">rho</span><span class="p">:</span>    <span class="n">rho</span> <span class="n">parameter</span>
+<span class="n">beta</span><span class="p">:</span>    <span class="n">beta</span> <span class="n">parameter</span>
+<span class="n">x</span><span class="p">:</span>    <span class="n">x</span> <span class="n">initial</span> <span class="n">state</span>
+<span class="n">y</span><span class="p">:</span>    <span class="n">y</span> <span class="n">initial</span> <span class="n">state</span>
+<span class="n">z</span><span class="p">:</span>    <span class="n">z</span> <span class="n">initial</span> <span class="n">state</span>
+<span class="n">t_d</span><span class="p">:</span>    <span class="n">time</span> <span class="n">differential</span>
+<span class="n">N</span><span class="p">:</span>    <span class="n">number</span> <span class="n">of</span> <span class="n">samples</span>
+<span class="n">states</span><span class="p">:</span>    <span class="n">array</span> <span class="n">of</span> <span class="n">states</span>
+<span class="n">directory</span><span class="p">:</span>    <span class="n">directory</span> <span class="k">for</span> <span class="n">saving</span>
+</pre></div>
+</div>
+<p>OUTPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">file</span> <span class="k">with</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">variables</span> <span class="ow">in</span> <span class="n">it</span><span class="o">.</span> 
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_all</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t_d</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">states</span><span class="p">)</span>  
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -280,16 +376,36 @@ data</p>
 <h3>Code<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This file can contain functionalities for saving/loading data</span>
-<span class="sd">123456789012345678901234567890123456789012345678901234567890123456789012</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">h5py</span><span class="o">,</span> <span class="nn">os</span>
 
-<span class="k">def</span> <span class="nf">save_all</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t_d</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">directory</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">save_all</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t_d</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">directory</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This function is to save all data in a HDF5 interface. The data </span>
-<span class="sd">    comprises configuration variables and the solution for the given </span>
-<span class="sd">    data</span>
+<span class="sd">    Save the variables, parameters and results in a hdf5 file</span>
+
+<span class="sd">    INPUT:: </span>
+
+<span class="sd">     fname:    name of file </span>
+<span class="sd">     sigma:    sigma parameter</span>
+<span class="sd">     rho:    rho parameter</span>
+<span class="sd">     beta:    beta parameter</span>
+<span class="sd">     x:    x initial state</span>
+<span class="sd">     y:    y initial state</span>
+<span class="sd">     z:    z initial state</span>
+<span class="sd">     t_d:    time differential</span>
+<span class="sd">     N:    number of samples</span>
+<span class="sd">     states:    array of states</span>
+<span class="sd">     directory:    directory for saving</span>
+
+<span class="sd">    OUTPUT::</span>
+
+<span class="sd">     A file with all the variables in it. </span>
+
+<span class="sd">    Example: </span>
+
+<span class="sd">    &gt;&gt;&gt; save_all(fname, sigma, rho, beta, x, y, z, t_d, N, states)  </span>
+<span class="sd">     </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">directory</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
@@ -304,14 +420,38 @@ data</p>
     <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">x</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">z</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span> <span class="s1">&#39;t_d&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">t</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">t_d</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span> <span class="s1">&#39;t_d&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">t_d</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">N</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span> <span class="s1">&#39;states&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">states</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">load_all</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This function is to load all the variables</span>
+<span class="sd">    </span>
+<span class="sd">    Save the variables, parameters and results in a hdf5 file</span>
+
+<span class="sd">    INPUT:: </span>
+
+<span class="sd">     fname:    name of file</span>
+
+<span class="sd">    OUTPUT::</span>
+<span class="sd"> </span>
+<span class="sd">     sigma:    sigma parameter</span>
+<span class="sd">     rho:    rho parameter</span>
+<span class="sd">     beta:    beta parameter</span>
+<span class="sd">     x:    x initial state</span>
+<span class="sd">     y:    y initial state</span>
+<span class="sd">     z:    z initial state</span>
+<span class="sd">     t_d:    time differential</span>
+<span class="sd">     N:    number of samples</span>
+<span class="sd">     states:    array of states</span>
+<span class="sd">     </span>
+<span class="sd">    Example: </span>
+
+<span class="sd">    &gt;&gt;&gt; fname = &quot;experimental&quot;</span>
+<span class="sd">    &gt;&gt;&gt; [sigma, rho, beta, x, y, z, t_d, N, states] = load_all(fname)  </span>
+<span class="sd">     </span>
+<span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span> <span class="n">fname</span> <span class="o">+</span> <span class="s1">&#39;.hdf5&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">sigma</span> <span class="o">=</span> <span class="n">f</span> <span class="p">[</span> <span class="s1">&#39;sigma&#39;</span> <span class="p">]</span>
@@ -332,7 +472,7 @@ data</p>
     <span class="n">N</span> <span class="o">=</span> <span class="n">N</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
     <span class="n">states</span> <span class="o">=</span> <span class="n">f</span> <span class="p">[</span> <span class="s1">&#39;states&#39;</span> <span class="p">]</span>
     <span class="n">states</span> <span class="o">=</span> <span class="n">states</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">sigma</span><span class="p">,</span><span class="n">rho</span><span class="p">,</span><span class="n">beta</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">t_d</span><span class="p">,</span><span class="n">states</span>
+    <span class="k">return</span> <span class="n">sigma</span><span class="p">,</span><span class="n">rho</span><span class="p">,</span><span class="n">beta</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t_d</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">states</span>
 
    
 </pre></div>
@@ -347,16 +487,54 @@ data</p>
 <p>1: computing a trajectory using an ODE solver from solver.py
 2: save data to file
 3: plot data
-123456789012345678901234567890123456789012345678901234567890123456789012
 and possible another function that</p>
 <p>2: load data from file
 3: plot data</p>
 <dl class="function">
+<dt id="lorenz.run.load_lorenz">
+<code class="descclassname">lorenz.run.</code><code class="descname">load_lorenz</code><span class="sig-paren">(</span><em>fname='Test'</em>, <em>plot=True</em><span class="sig-paren">)</span><a class="headerlink" href="#lorenz.run.load_lorenz" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will load the lorenz and plot it</p>
+<p>INPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fname</span><span class="p">:</span>    <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">file</span> <span class="n">to</span> <span class="nb">open</span>
+<span class="n">plot</span><span class="p">:</span>    <span class="nb">bool</span> <span class="n">to</span> <span class="n">plot</span> <span class="ow">or</span> <span class="ow">not</span>
+</pre></div>
+</div>
+<p>OUTPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Nothing</span><span class="p">,</span> <span class="n">just</span> <span class="n">plots</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">load_lorenz</span><span class="p">(</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
 <dt id="lorenz.run.run_lorenz">
-<code class="descclassname">lorenz.run.</code><code class="descname">run_lorenz</code><span class="sig-paren">(</span><em>parameters, ini_state=[0.1, 0.1, 0.2], t_d=0.001, N=50000, plot=False, save=False, fname='Test', directory=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lorenz.run.run_lorenz" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function is to run the lorenz simulation, plot it, and save it 
-parameters is a list containing sigma, rho, beta
-ini_state is a vector contaning</p>
+<code class="descclassname">lorenz.run.</code><code class="descname">run_lorenz</code><span class="sig-paren">(</span><em>parameters, ini_state=[0.1, 0.1, 0.1], t_d=0.001, N=50000, plot=False, save=False, fname='Test', directory=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lorenz.run.run_lorenz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the states, save the variables, plots and save the plots
+using the auxiliary functions provided.</p>
+<p>INPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>    <span class="n">the</span> <span class="n">parameters</span> <span class="n">of</span> <span class="n">the</span> <span class="n">lorenz</span> <span class="n">attractor</span>
+<span class="n">ini_state</span><span class="p">:</span>    <span class="n">initial</span> <span class="n">state</span> <span class="n">of</span> <span class="n">the</span> <span class="n">lorenz</span> <span class="n">attractor</span>
+<span class="n">t_d</span><span class="p">:</span>    <span class="n">the</span> <span class="n">time</span> <span class="n">differential</span> 
+<span class="n">N</span><span class="p">:</span>    <span class="n">number</span> <span class="n">of</span> <span class="n">samples</span>
+<span class="n">plot</span><span class="p">:</span>    <span class="nb">bool</span> <span class="n">to</span> <span class="n">plot</span>
+<span class="n">save</span><span class="p">:</span>    <span class="nb">bool</span> <span class="k">for</span> <span class="n">saving</span>
+<span class="n">fname</span><span class="p">:</span>    <span class="n">name</span> <span class="n">of</span> <span class="n">file</span>
+<span class="n">directory</span><span class="p">:</span>    <span class="n">directory</span> <span class="n">to</span> <span class="n">save</span>
+</pre></div>
+</div>
+<p>OUTPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">states</span><span class="p">:</span>    <span class="n">the</span> <span class="n">states</span> <span class="n">of</span> <span class="n">the</span> <span class="n">lorenz</span> <span class="n">attractor</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">span</span> <span class="n">of</span>
+           <span class="n">the</span> <span class="n">differential</span> <span class="n">time</span> <span class="ow">and</span> <span class="n">number</span> <span class="n">of</span> <span class="n">samples</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">param</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">run_lorenz</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -368,7 +546,6 @@ ini_state is a vector contaning</p>
 <span class="sd">1: computing a trajectory using an ODE solver from solver.py</span>
 <span class="sd">2: save data to file</span>
 <span class="sd">3: plot data</span>
-<span class="sd">123456789012345678901234567890123456789012345678901234567890123456789012</span>
 <span class="sd">and possible another function that</span>
 
 <span class="sd">2: load data from file</span>
@@ -386,13 +563,34 @@ ini_state is a vector contaning</p>
 
 
 
-<span class="k">def</span> <span class="nf">run_lorenz</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">ini_state</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">t_d</span> <span class="o">=</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> 
+<span class="k">def</span> <span class="nf">run_lorenz</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">ini_state</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="n">t_d</span> <span class="o">=</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> 
                <span class="n">N</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span> <span class="n">plot</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;Test&#39;</span><span class="p">,</span> 
                <span class="n">directory</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This function is to run the lorenz simulation, plot it, and save it </span>
-<span class="sd">    parameters is a list containing sigma, rho, beta</span>
-<span class="sd">    ini_state is a vector contaning </span>
+<span class="sd">    Return the states, save the variables, plots and save the plots</span>
+<span class="sd">    using the auxiliary functions provided. </span>
+
+<span class="sd">    INPUT::</span>
+
+<span class="sd">     parameters:    the parameters of the lorenz attractor</span>
+<span class="sd">     ini_state:    initial state of the lorenz attractor</span>
+<span class="sd">     t_d:    the time differential </span>
+<span class="sd">     N:    number of samples</span>
+<span class="sd">     plot:    bool to plot</span>
+<span class="sd">     save:    bool for saving</span>
+<span class="sd">     fname:    name of file</span>
+<span class="sd">     directory:    directory to save</span>
+
+<span class="sd">    OUTPUT:: </span>
+<span class="sd">  </span>
+<span class="sd">     states:    the states of the lorenz attractor in the span of</span>
+<span class="sd">                the differential time and number of samples</span>
+
+<span class="sd">    Example: </span>
+
+<span class="sd">    &gt;&gt;&gt; param = [10, 2, 6]</span>
+<span class="sd">    &gt;&gt;&gt; run_lorenz(param)</span>
+<span class="sd">     </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sigma</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">parameters</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ini_state</span>
@@ -419,6 +617,22 @@ ini_state is a vector contaning</p>
     <span class="k">return</span> <span class="n">states</span>
          
 <span class="k">def</span> <span class="nf">load_lorenz</span><span class="p">(</span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="n">plot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function will load the lorenz and plot it</span>
+
+<span class="sd">    INPUT:: </span>
+
+<span class="sd">     fname:    the name of the file to open</span>
+<span class="sd">     plot:    bool to plot or not</span>
+
+<span class="sd">    OUTPUT:: </span>
+
+<span class="sd">     Nothing, just plots</span>
+
+<span class="sd">    Example: </span>
+
+<span class="sd">    &gt;&gt;&gt; load_lorenz(&#39;Test&#39;, True)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">[</span><span class="n">s2</span><span class="p">,</span><span class="n">r3</span><span class="p">,</span><span class="n">b2</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">z2</span><span class="p">,</span><span class="n">t_d2</span><span class="p">,</span><span class="n">N2</span><span class="p">,</span><span class="n">st2</span><span class="p">]</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">load_all</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">plot_3d_states</span><span class="p">(</span><span class="n">st2</span><span class="p">)</span>
@@ -530,19 +744,41 @@ ini_state is a vector contaning</p>
 <h2>Util: Utility code<a class="headerlink" href="#util-utility-code" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id7">
 <h3>Functions<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-lorenz.util"></span><p>This file may contain utility functionalities to the extend you will 
-need it
-123456789012345678901234567890123456789012345678901234567890123456789012</p>
+<span class="target" id="module-lorenz.util"></span><p>This file may contain utility functionalities.</p>
 <dl class="function">
 <dt id="lorenz.util.my_input_float">
 <code class="descclassname">lorenz.util.</code><code class="descname">my_input_float</code><span class="sig-paren">(</span><em>var</em><span class="sig-paren">)</span><a class="headerlink" href="#lorenz.util.my_input_float" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function is for validation of entering a float value</p>
+<dd><p>This function is for validation of entering a float value.</p>
+<p>INPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span><span class="p">:</span>    <span class="n">name</span> <span class="n">of</span> <span class="n">variable</span> <span class="n">to</span> <span class="n">display</span><span class="o">.</span> 
+</pre></div>
+</div>
+<p>OUTPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">variable</span><span class="p">:</span>    <span class="nb">float</span> <span class="nb">input</span> <span class="n">variable</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">my_input_float</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="lorenz.util.my_input_int">
 <code class="descclassname">lorenz.util.</code><code class="descname">my_input_int</code><span class="sig-paren">(</span><em>var</em><span class="sig-paren">)</span><a class="headerlink" href="#lorenz.util.my_input_int" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function is for validation of entering a float value</p>
+<dd><p>This function is for validation of entering an int value.</p>
+<p>INPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span><span class="p">:</span>    <span class="n">name</span> <span class="n">of</span> <span class="n">variable</span> <span class="n">to</span> <span class="n">display</span><span class="o">.</span> 
+</pre></div>
+</div>
+<p>OUTPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">variable</span><span class="p">:</span>    <span class="nb">int</span> <span class="nb">input</span> <span class="n">variable</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">my_input_int</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -551,15 +787,32 @@ need it
 <dd><p>This is a Lorenz attractor taken from the wikipedia page 
 It will solve the lorenz attractor with a built-in solver
 odeint of numpy</p>
+<p>INPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>    <span class="n">array</span> <span class="n">of</span> <span class="n">parameters</span> <span class="n">of</span> <span class="n">the</span> <span class="n">lorenz</span> <span class="n">attractor</span>
+<span class="n">ini_state</span><span class="p">:</span>    <span class="n">initial</span> <span class="n">state</span>
+<span class="n">t_d</span><span class="p">:</span>    <span class="n">time</span> <span class="n">difference</span>
+<span class="n">N</span><span class="p">:</span>    <span class="n">number</span> <span class="n">of</span> <span class="n">samples</span>
+<span class="n">plot</span><span class="p">:</span>    <span class="nb">bool</span> <span class="n">value</span> <span class="k">for</span> <span class="n">ploting</span>
+</pre></div>
+</div>
+<p>OUTPUT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">states</span><span class="p">:</span>    <span class="n">array</span> <span class="n">of</span> <span class="n">states</span> 
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t_d</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">states</span> <span class="o">=</span> <span class="n">lorenz_solver</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">t_d</span><span class="p">,</span> <span class="n">plot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
 <div class="section" id="id8">
 <h3>Code<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">This file may contain utility functionalities to the extend you will </span>
-<span class="sd">need it</span>
-<span class="sd">123456789012345678901234567890123456789012345678901234567890123456789012</span>
+<span class="sd">This file may contain utility functionalities.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -567,12 +820,23 @@ odeint of numpy</p>
 <span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="k">import</span> <span class="n">odeint</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="k">import</span> <span class="n">Axes3D</span>
 
-
-
-
 <span class="k">def</span> <span class="nf">my_input_float</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This function is for validation of entering a float value</span>
+
+<span class="sd">    This function is for validation of entering a float value.</span>
+
+<span class="sd">    INPUT::</span>
+
+<span class="sd">     var:    name of variable to display. </span>
+
+<span class="sd">    OUTPUT:: </span>
+
+<span class="sd">     variable:    float input variable</span>
+
+<span class="sd">    Example: </span>
+
+<span class="sd">    &gt;&gt;&gt; a = my_input_float(&quot;a&quot;)</span>
+<span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
@@ -586,7 +850,21 @@ odeint of numpy</p>
 
 <span class="k">def</span> <span class="nf">my_input_int</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This function is for validation of entering a float value</span>
+
+<span class="sd">    This function is for validation of entering an int value.</span>
+
+<span class="sd">    INPUT::</span>
+
+<span class="sd">     var:    name of variable to display. </span>
+
+<span class="sd">    OUTPUT:: </span>
+
+<span class="sd">     variable:    int input variable</span>
+
+<span class="sd">    Example: </span>
+
+<span class="sd">    &gt;&gt;&gt; a = my_input_int(&quot;a&quot;)</span>
+<span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
@@ -604,6 +882,26 @@ odeint of numpy</p>
 <span class="sd">    This is a Lorenz attractor taken from the wikipedia page </span>
 <span class="sd">    It will solve the lorenz attractor with a built-in solver</span>
 <span class="sd">    odeint of numpy</span>
+
+<span class="sd">    INPUT:: </span>
+
+<span class="sd">     parameters:    array of parameters of the lorenz attractor</span>
+<span class="sd">     ini_state:    initial state</span>
+<span class="sd">     t_d:    time difference</span>
+<span class="sd">     N:    number of samples</span>
+<span class="sd">     plot:    bool value for ploting</span>
+
+<span class="sd">    OUTPUT:: </span>
+
+<span class="sd">     states:    array of states </span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; state = [1.0, 1.0, 1.0]</span>
+<span class="sd">    &gt;&gt;&gt; parameters = [1.0, 1.0, 1.0]</span>
+<span class="sd">    &gt;&gt;&gt; t_d = 0.001</span>
+<span class="sd">    &gt;&gt;&gt; states = lorenz_solver(parameters, state, t_d, plot = True)</span>
+<span class="sd">     </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sigma</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">parameters</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ini_state</span>

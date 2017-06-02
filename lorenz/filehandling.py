@@ -1,15 +1,35 @@
 """
 This file can contain functionalities for saving/loading data
-123456789012345678901234567890123456789012345678901234567890123456789012
 """
 
 import h5py, os
 
-def save_all(fname, sigma, rho, beta, x, y, z, t, t_d, states, directory = None):
+def save_all(fname, sigma, rho, beta, x, y, z, t_d, N, states, directory = None):
     """
-    This function is to save all data in a HDF5 interface. The data 
-    comprises configuration variables and the solution for the given 
-    data
+    Save the variables, parameters and results in a hdf5 file
+
+    INPUT:: 
+
+     fname:    name of file 
+     sigma:    sigma parameter
+     rho:    rho parameter
+     beta:    beta parameter
+     x:    x initial state
+     y:    y initial state
+     z:    z initial state
+     t_d:    time differential
+     N:    number of samples
+     states:    array of states
+     directory:    directory for saving
+
+    OUTPUT::
+
+     A file with all the variables in it. 
+
+    Example: 
+
+    >>> save_all(fname, sigma, rho, beta, x, y, z, t_d, N, states)  
+     
     """
     if directory != None:
         if not os.path.exists(directory):
@@ -24,14 +44,38 @@ def save_all(fname, sigma, rho, beta, x, y, z, t, t_d, states, directory = None)
     f.create_dataset( 'x', data = x)
     f.create_dataset( 'y', data = y)
     f.create_dataset( 'z', data = z)
-    f.create_dataset( 't_d', data = t)
-    f.create_dataset( 'N', data = t_d)
+    f.create_dataset( 't_d', data = t_d)
+    f.create_dataset( 'N', data = N)
     f.create_dataset( 'states', data = states)
     f.close()
 
 def load_all(fname):
     """
-    This function is to load all the variables
+    
+    Save the variables, parameters and results in a hdf5 file
+
+    INPUT:: 
+
+     fname:    name of file
+
+    OUTPUT::
+ 
+     sigma:    sigma parameter
+     rho:    rho parameter
+     beta:    beta parameter
+     x:    x initial state
+     y:    y initial state
+     z:    z initial state
+     t_d:    time differential
+     N:    number of samples
+     states:    array of states
+     
+    Example: 
+
+    >>> fname = "experimental"
+    >>> [sigma, rho, beta, x, y, z, t_d, N, states] = load_all(fname)  
+     
+    
     """
     f = h5py.File( fname + '.hdf5', 'r')
     sigma = f [ 'sigma' ]
@@ -52,6 +96,6 @@ def load_all(fname):
     N = N [...]
     states = f [ 'states' ]
     states = states [...]
-    return sigma,rho,beta,x,y,z,t,t_d,states
+    return sigma,rho,beta,x,y,z,t_d,N,states
 
    
