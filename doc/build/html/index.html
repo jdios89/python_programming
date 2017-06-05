@@ -65,9 +65,26 @@
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
 <li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
-<p>Here I will put an explanation of the lorenz attractor.</p>
-<p>Maybe I can put a test or two
-And how to launch all cases</p>
+</div>
+<div class="section" id="lorenz-system">
+<h1>Lorenz system<a class="headerlink" href="#lorenz-system" title="Permalink to this headline">¶</a></h1>
+<p>The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It has chaotic solutions for certain parameter values and initial conditions. The Lorenz attractor is a set of chaotic solutions of the Lorenz system which, when plotted, resemble a butterfly or figure eight.</p>
+<p>The lorenz equations are as follows</p>
+<div class="math">
+<p><img src="_images/math/602a8c185973bc4cadc2b32421b699502984d3ca.png" alt="\frac{dx}{dt} = \sigma (y-x), \\
+\frac{dy}{dt} = x(\rho - z) - y, \\
+\frac{dz}{dt} = xy - \beta z"/></p>
+</div><p>In order to solve the differential equations it is necessary to implement a solver for the differential equations, for which the Euler approximation for first order differential equations is selected.</p>
+<p>It is formulated as</p>
+<div class="math">
+<p><img src="_images/math/8f2092e47b415adc16d9856d70d29ba921e2163d.png" alt="\frac{x_{n+1} - x_n}{t_d} = f(x,y,z) \\
+x_{n+1} = f(x,y,z) \cdot t_d + x_n"/></p>
+</div><p>The same formulation is applied for the rest of the differential equations.</p>
+<p>It should be noticed that the solution for a period of time of the lorenz attractor is very sensitive to initial conditions.</p>
+</div>
+<div class="section" id="launching-the-test-cases-for-different-parameters">
+<h1>Launching the test cases for different parameters<a class="headerlink" href="#launching-the-test-cases-for-different-parameters" title="Permalink to this headline">¶</a></h1>
+<p>Locate the terminal/ipython in the folder of cases. When running the script it will plot the different solutions and save all the figures, data and solutions to pdf and a hdf5 file.</p>
 <p>You can run the test case 1 as</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">case1</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
@@ -83,6 +100,16 @@ And how to launch all cases</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="testing-the-code">
+<h1>Testing the code<a class="headerlink" href="#testing-the-code" title="Permalink to this headline">¶</a></h1>
+<p>Locate the terminal/ipython in the folder of tests. You can run the tests and it will be compared to numpy ODE solver. It should be noticed that the more chaotic the system it will fail the test.</p>
+<p>It was observed that the Euler solver carry delays to the solution than the ODE solver inside numpy.</p>
+<p>To run the tests you can type</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">test</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>It will pass the first two cases and fail the three last cases, which are compared to the ODE solver of numpy.</p>
+</div>
 
 
           </div>
@@ -94,6 +121,9 @@ And how to launch all cases</p>
   <ul>
 <li><a class="reference internal" href="#">Welcome to Scientific Computing using python - mini project&#8217;s documentation!</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#lorenz-system">Lorenz system</a></li>
+<li><a class="reference internal" href="#launching-the-test-cases-for-different-parameters">Launching the test cases for different parameters</a></li>
+<li><a class="reference internal" href="#testing-the-code">Testing the code</a></li>
 </ul>
 <div class="relations">
 <h3>Related Topics</h3>

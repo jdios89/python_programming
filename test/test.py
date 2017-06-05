@@ -16,7 +16,7 @@ class Test_solver(unittest.TestCase):
     """
     def test_solver1(self):
         """
-        The test for my solver
+        The test for my solver 1
         """
         state = [1.0, 1.0, 1.0]
         sig = 10
@@ -32,10 +32,7 @@ class Test_solver(unittest.TestCase):
                                     rtol = 1e-2, atol = 1e-2))
     def test_solver2(self):
         """
-        The test for my solver
-        """
-        """
-        The test for my solver
+        The test for my solver 2
         """
         state = [1.0, 1.0, 1.0]
         sig = 10
@@ -51,7 +48,7 @@ class Test_solver(unittest.TestCase):
                                     rtol = 2e-1,atol = 1))
     def test_solver3(self):
         """
-        The test for my solver
+        The test for my solver 3
         """
         state = [1.0, 1.0, 1.0]
         sig = 10
