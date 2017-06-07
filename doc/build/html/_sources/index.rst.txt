@@ -6,11 +6,7 @@
 Welcome to Scientific Computing using python - mini project's documentation!
 ============================================================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-   
-   Functions
+
 
 Indices and tables
 ==================
@@ -43,7 +39,6 @@ It is formulated as
 The same formulation is applied for the rest of the differential equations. 
 
 It should be noticed that the solution for a period of time of the lorenz attractor is very sensitive to initial conditions. 
-
  
 
 Launching the test cases for different parameters
@@ -84,4 +79,15 @@ To run the tests you can type
 
     >>> python test.py
 
-It will pass the first two cases and fail the three last cases, which are compared to the ODE solver of numpy. 
+It will pass the first three cases and fail the last two cases, which are compared to the ODE solver of numpy. 
+
+The Lorenz package
+==================
+
+The package consists of the following modules and functions 
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+   
+   Functions
