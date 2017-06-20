@@ -41,7 +41,7 @@
 
 
 \title{Scientific Computing using python - mini project Documentation}
-\date{Jun 07, 2017}
+\date{Jun 20, 2017}
 \release{}
 \author{Juan de Dios Flores Mendez}
 \newcommand{\sphinxlogo}{}
@@ -119,7 +119,7 @@ and so on
 
 \chapter{Testing the code}
 \label{\detokenize{index:testing-the-code}}
-Locate the terminal/ipython in the folder of tests. You can run the tests and it will be compared to numpy ODE solver. It should be noticed that the more chaotic the system it will fail the test.
+Locate the terminal/ipython in the folder of test. You can run the tests and it will be compared to numpy ODE solver. It should be noticed that the more chaotic the system it will fail the test.
 
 It was observed that the Euler solver carry delays to the solution than the ODE solver inside numpy.
 
@@ -127,9 +127,10 @@ To run the tests you can type
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{python} \PYG{n}{test}\PYG{o}{.}\PYG{n}{py}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}\PYG{n}{FF}
 \end{sphinxVerbatim}
 
-It will pass the first three cases and fail the last two cases, which are compared to the ODE solver of numpy.
+It will pass the first three cases and fail the last two cases, which are compared to the ODE solver of numpy. The output of dots mean that the case passed the test and the last two Fs means that it failed the case.
 
 
 \chapter{The Lorenz package}
@@ -138,7 +139,7 @@ The package consists of the following modules and functions
 
 
 \section{The modules and functions in the lorenz package are listed here}
-\label{\detokenize{Functions:the-modules-and-functions-in-the-lorenz-package-are-listed-here}}\label{\detokenize{Functions::doc}}
+\label{\detokenize{Functions::doc}}\label{\detokenize{Functions:the-modules-and-functions-in-the-lorenz-package-are-listed-here}}
 
 \subsection{Solver: lorenz attractor solver}
 \label{\detokenize{Functions:solver-lorenz-attractor-solver}}
@@ -149,7 +150,7 @@ It includes a basic solver for the lorenz attractor.
 
 
 \subsubsection{Functions}
-\label{\detokenize{Functions:module-lorenz.solver}}\label{\detokenize{Functions:functions}}\index{lorenz.solver (module)}
+\label{\detokenize{Functions:functions}}\label{\detokenize{Functions:module-lorenz.solver}}\index{lorenz.solver (module)}
 This is the solver for the differential equations of Lorenz attractor.
 \index{lorenz\_solver() (in module lorenz.solver)}
 

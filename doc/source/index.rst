@@ -69,7 +69,7 @@ and so on
 Testing the code
 ================
 
-Locate the terminal/ipython in the folder of tests. You can run the tests and it will be compared to numpy ODE solver. It should be noticed that the more chaotic the system it will fail the test. 
+Locate the terminal/ipython in the folder of test. You can run the tests and it will be compared to numpy ODE solver. It should be noticed that the more chaotic the system it will fail the test. 
 
 It was observed that the Euler solver carry delays to the solution than the ODE solver inside numpy. 
 
@@ -78,8 +78,9 @@ To run the tests you can type
 .. code-block:: python
 
     >>> python test.py
+    >>> ...FF
 
-It will pass the first three cases and fail the last two cases, which are compared to the ODE solver of numpy. 
+It will pass the first three cases and fail the last two cases, which are compared to the ODE solver of numpy. The output of dots mean that the case passed the test and the last two Fs means that it failed the case.  
 
 The Lorenz package
 ==================

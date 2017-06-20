@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  7 JUN 2017 09:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.26)  20 JUN 2017 08:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1181,49 +1181,49 @@ LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10> not available
 (Font)              Font shape `T1/pcr/b/n' tried instead on input line 1.
 [9]
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <9> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 203.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 204.
  [10]
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 320.
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 321.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 )
 LaTeX Font Info:    Font shape `TS1/pcr/m/it' in size <9> not available
-(Font)              Font shape `TS1/pcr/m/sl' tried instead on input line 343.
+(Font)              Font shape `TS1/pcr/m/sl' tried instead on input line 344.
  [11]
-Underfull \vbox (badness 10000) detected at line 438
+Underfull \vbox (badness 10000) detected at line 439
  []
 
 
-Underfull \vbox (badness 10000) detected at line 438
+Underfull \vbox (badness 10000) detected at line 439
  []
 
 [12] [13] [14]
-Underfull \vbox (badness 10000) detected at line 624
+Underfull \vbox (badness 10000) detected at line 625
  []
 
 
-Underfull \vbox (badness 10000) detected at line 624
+Underfull \vbox (badness 10000) detected at line 625
  []
 
 [15] [16] [17]
-Underfull \vbox (badness 10000) detected at line 905
+Underfull \vbox (badness 10000) detected at line 906
  []
 
 
-Underfull \vbox (badness 10000) detected at line 905
+Underfull \vbox (badness 10000) detected at line 906
  []
 
 [18]
-Underfull \vbox (badness 10000) detected at line 905
+Underfull \vbox (badness 10000) detected at line 906
  []
 
 
-Underfull \vbox (badness 10000) detected at line 905
+Underfull \vbox (badness 10000) detected at line 906
  []
 
 [19] [20] [21]
-Underfull \vbox (badness 2538) detected at line 1118
+Underfull \vbox (badness 2538) detected at line 1119
  []
 
 [22] [23] [24
@@ -1236,17 +1236,17 @@ Underfull \vbox (badness 2538) detected at line 1118
 
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1134.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1134.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1135.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1135.
 
 (./ScientificComputingusingpython-miniproject.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1134.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1134.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1135.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1135.
 
 Package rerunfilecheck Info: File `ScientificComputingusingpython-miniproject.o
 ut' has not changed.
 (rerunfilecheck)             Checksum: 0210F0FCDAF13836E2224108D23A2FE1;1369.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1134.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1135.
  ) 
 Here is how much of TeX's memory you used:
  13762 strings out of 494883
@@ -1269,8 +1269,8 @@ mf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ScientificComputingusingpython-miniproject.pdf (30 pages, 185
-776 bytes).
+Output written on ScientificComputingusingpython-miniproject.pdf (30 pages, 186
+060 bytes).
 PDF statistics:
  299 PDF objects out of 1000 (max. 8388607)
  245 compressed objects within 3 object streams

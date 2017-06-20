@@ -5,22 +5,23 @@ course "Scientific Computing using Python, part 1", held
 at Aalborg University, May 2017
 
 #
-Here you can put a bit of information/documentation of the program
-you develop, including:
 
 - Author: Juan de Dios Flores Mendez
 - What does the program?: It simulates the lorenz attractor. The ODE solver is developed with the euler approach. 
-- Same as supplied
-- How to run the program: install python, then run it. 
+- It runs with five cases that are under the cases folder
+- How to run the program: install python, then locate with the terminal or ipython or spyder in the folder of cases.
+                          run each of the cases and it will automatically save all the data generated and the figures,
+                          in its own folder.  
+- Testing the program: Locate in the test folder and run the python script. 
 
 #
-you might need to put something like, i just did
 
-import sys  
-nsys.path.append('../')  
-import lorenz 
+The cases and the test does not need to have the other modules loaded, it will do that automatically. 
 
-in e.g. cases/case1.py or test/test.py to be access the functions etc.
-you make in lorenz/solver.py, lorenz/run.py etc.
+You can access this repository here: 
+
+https://github.com/jdios89/python_programming
+
+
 
 
